@@ -77,8 +77,9 @@
         dyr.forEach((etDyr) => {
           let klon = dyrTemplate.cloneNode(true).content;
           klon.querySelector("h3").textContent = etDyr.navn;
-          klon.querySelector(".art").textContent = etDyr.type;
-          klon.querySelector(".sted").textContent = etDyr.levested;
+          klon.querySelector(".art").textContent = "Type: " + etDyr.type;
+          klon.querySelector(".sted").textContent =
+            "Levested: " + etDyr.levested;
           klon.querySelector("img").src = etDyr.billede;
           container.appendChild(klon);
         });
