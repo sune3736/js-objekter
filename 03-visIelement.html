@@ -17,8 +17,6 @@
     <script>
       document.addEventListener("DOMContentLoaded", start);
       function start() {
-        console.log(start);
-
         let dyr = {
           navn: "gris",
           type: "pattedyr",
@@ -27,16 +25,16 @@
         };
 
         const article = document.querySelector("article");
-        let p1 = `${dyr.type}`;
-        console.log(p1);
-        let p2 = `${dyr.levested}`;
-        console.log(p2);
+
         article.querySelector("h3").textContent = dyr.navn;
         article.querySelector("img").src = dyr.billede;
 
-        article.querySelector("p").textContent += dyr.type;
-        article.querySelector("article p:last-child").textContent +=
-          dyr.levested;
+        article.querySelector("p").textContent = "Type: " + dyr.type;
+        article.querySelector("p:last-child").textContent =
+          "Levested: " + dyr.levested;
+
+        // article.querySelector("article p:last-child").textContent +=
+        //   dyr.levested;
 
         // const tekst = document.createElement("p");
         // const pic = document.createElement("img");

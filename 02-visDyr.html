@@ -22,12 +22,14 @@
         };
 
         const article = document.querySelector("article");
-        const tekst = document.createElement("p");
-        const pic = document.createElement("img");
-        tekst.textContent = `navn:${dyr.navn} type:${dyr.type} levested:${dyr.levested}`;
-        article.appendChild(tekst);
-        pic.src = dyr.billede;
-        article.appendChild(pic);
+        // const tekst = document.createElement("p");
+        // const pic = document.createElement("img");
+        // tekst.textContent = `navn: ${dyr.navn} type: ${dyr.type} levested: ${dyr.levested}`;
+        // article.appendChild(tekst);
+        // pic.src = dyr.billede;
+        // article.appendChild(pic);
+
+        article.innerHTML = `<p>Dyr: ${dyr.navn} Type: ${dyr.type} Levested: ${dyr.levested} </p><img src=${dyr.billede}>`;
       }
     </script>
   </body>
