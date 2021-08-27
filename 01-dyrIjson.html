@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      section {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+        gap: 10px;
+      }
+      article {
+        border: 1px solid #333;
+        padding: 10px;
+      }
+
+      img {
+        max-width: 30%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <section class="data-container"></section>
+
+    <template>
+      <article id="liste">
+        <h3></h3>
+        <img src="" alt="" />
+        <p class="art"></p>
+        <p class="sted"></p>
+      </article>
+    </template>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", hentdata);
+
+      const fil = "alleDyr.json";
+      let dyr;
+      async function hentdata() {
+        const respons = await fetch(fil);
+        dyr = await respons.json();
+        vis();
+      }
+
+      function vis() {
+        const container = document.querySelector(".data-container");
+        const dyrTemplate = document.querySelector("template");
+
+        dyr.forEach((etDyr) => {
+          let klon = dyrTemplate.cloneNode(true).content;
+          klon.querySelector("h3").textContent = etDyr.navn;
+          klon.querySelector(".art").textContent = "Type: " + etDyr.type;
+          klon.querySelector(".sted").textContent =
+            "Levested: " + etDyr.levested;
+          klon.querySelector("img").src = etDyr.billede;
+          container.appendChild(klon);
+        });
+      }
+    </script>
+  </body>
+</html>
